@@ -171,10 +171,12 @@ struct BitFieldArray
         typedef T StorageType;
 
 #define ADD_BITFIELD_MEMBER(memberName, offset, bits) \
-        BitFieldMember<StorageType, offset, bits> memberName;
+        BitFieldMember<StorageType, offset, bits> memberName; \
+        typedef BitFieldMember<StorageType, offset, bits> type_##memberName;
 
 #define ADD_BITFIELD_ARRAY(memberName, offset, bits, numItems) \
-        BitFieldArray<StorageType, offset, bits, numItems> memberName;
+        BitFieldArray<StorageType, offset, bits, numItems> memberName; \
+        typedef BitFieldMember<StorageType, offset, bits> type_##memberName;
 
 #define END_BITFIELD_TYPE(var) \
     } var;          // var is optional
