@@ -176,8 +176,8 @@ struct BitFieldArray
 #define ADD_BITFIELD_ARRAY(memberName, offset, bits, numItems) \
         BitFieldArray<StorageType, offset, bits, numItems> memberName;
 
-#define END_BITFIELD_TYPE() \
-    };
+#define END_BITFIELD_TYPE(var) \
+    } var;          // var is optional
 
 
 #endif // __CPP11OM_BITFIELD_H__
