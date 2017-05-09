@@ -17,6 +17,7 @@
 template <typename T, int Offset, int Bits>
 struct BitFieldMember
 {
+    typedef T StorageType;
     T value;
 
     static_assert(Offset + Bits <= (int) sizeof(T) * 8, "Member exceeds bitfield boundaries");
@@ -78,6 +79,7 @@ struct BitFieldMember
 template <typename T, int BaseOffset, int BitsPerItem, int NumItems>
 struct BitFieldArray
 {
+    typedef T StorageType;
     T value;
 
     static_assert(BaseOffset + BitsPerItem * NumItems <= (int) sizeof(T) * 8, "Array exceeds bitfield boundaries");
